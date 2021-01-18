@@ -1,5 +1,41 @@
+/* == GLOBAL == */
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500&display=swap');
 
 *{
     font-family: 'Raleway', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+
+body{
+    background: #f0f2f5;
+}
+
+.container{
+    width: min(90vw, 800px);
+    margin: auto;
+}
+
+/* == HEADER == */
+
+header{
+    background: #483D8B;
+    padding: 2rem 0 10rem;
+    text-align: center;
+}
+
+#logo{
+    color: #fff;
+    font-weight: 100;
+}
+
+/* == BALANCE == */
+
+/* == FOOTER == */
+
+footer{
+    text-align: center;
+}
+
+/* continuar dos 2h10mim*/
