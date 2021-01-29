@@ -31,19 +31,38 @@ const Modal = {
 {
     id: 4,
     description: 'App',
-    amount: 20000,
+    amount: 200000,
     date: '23/01/2021'
 },
 ]
 
   const Transaction = {
       incomes() {
+        let income = 0;
+
+        transactions.forEach(transaction => {
+          if( transaction.amount > 0) {
+            income += transaction.amount;
+          }
+        })
+
+        return income;
 
       },
       expenses() {
+        let expense = 0;
+
+        transactions.forEach(transaction => {
+          if( transaction.amount < 0) {
+            expense += transaction.amount;
+          }
+        })
+
+        return expense;
 
       },
       total() {
+        return Transaction.incomes() + Transaction.expenses()
 
       }
   }
@@ -75,9 +94,9 @@ const Modal = {
       },
 
       updateBalance() {
-        document.getElementById('incomeDisplay').innerHTML = Transaction.incomes()
-        document.getElementById('expenseDisplay').innerHTML = Transaction.expenses()
-        document.getElementById('totalDisplay').innerHTML = Transaction.total()
+        document.getElementById('incomeDisplay').innerHTML = Utils.formatCurrency(Transaction.incomes())
+        document.getElementById('expenseDisplay').innerHTML = Utils.formatCurrency(Transaction.expenses())
+        document.getElementById('totalDisplay').innerHTML = Utils.formatCurrency(Transaction.total())
       }
   }
 
@@ -100,3 +119,4 @@ const Modal = {
   DOM.updateBalance()
 
  
+// continuar de 1:31:49
