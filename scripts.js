@@ -37,10 +37,16 @@ const Modal = {
 ]
 
   const Transaction = {
+      all: transactions,
+
+      add(transaction) {
+          Transaction.all.push(transaction)
+          App.reload()
+      },
       incomes() {
         let income = 0;
 
-        transactions.forEach(transaction => {
+        Transaction.all.forEach(transaction => {
           if( transaction.amount > 0) {
             income += transaction.amount;
           }
@@ -52,7 +58,7 @@ const Modal = {
       expenses() {
         let expense = 0;
 
-        transactions.forEach(transaction => {
+        Transaction.all.forEach(transaction => {
           if( transaction.amount < 0) {
             expense += transaction.amount;
           }
@@ -112,11 +118,30 @@ const Modal = {
     }
   }
 
-  transactions.forEach(function(transaction) {
-      DOM.addTransaction(transaction)
-  })
+  const App = {
+      init() {
 
-  DOM.updateBalance()
+        Transaction.all.forEach(transaction => {
+            DOM.addTransaction(transaction)
+        })
+      
+        DOM.updateBalance()
+      
+      
+      },
+      reload() {
+          App.init()
+      },
+  }
 
- 
-// continuar de 1:31:49
+App.init()
+
+
+Transaction.add({
+    id: 39,
+    description:'Alô',
+    amount: 200,
+    date: '23/01/2021'
+})
+
+// continuar de 1:43:56
