@@ -183,3 +183,17 @@ const Modal = {
 App.init()
 
 
+<<<<<<< HEAD
+=======
+Transaction.add({
+    id: 39,
+    description:'Alô',
+    amount: 200,
+    date: '23/01/2021'
+})
+
+// continuar de 1:43:56
+// continuar de 1:43:56
+// continuar de 1:43:56
+
+>>>>>>> 1f4f38a4d4e6355d79a5f8b1eec4afe0a28f0678
