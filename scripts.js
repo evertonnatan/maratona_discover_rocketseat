@@ -81,7 +81,7 @@ const Modal = {
 
       addTransaction(transaction, index) {
         const tr = document.createElement('tr')
-        tr.innerHTML = DOM.innerHTMLTransaction(transaction)
+        tr.innerHTML = DOM.innerHTMLTransaction(transaction, index)
 
         DOM.transactionsContainer.appendChild(tr)
       },
@@ -114,6 +114,17 @@ const Modal = {
   }
 
   const Utils = {
+    formatAmount(value) {
+      value = Number(value) * 100
+      
+      return value
+    },
+
+    formatDate(date) {
+      const splittedDate = date.split("-")
+      return `${splittedDate[2]}/${splittedDate[1]}/${splittedDate[0]}`
+    },
+
     formatCurrency(value) {
       const signal = Number(value) < 0 ? "-" : ""
 
@@ -137,29 +148,51 @@ const Modal = {
         date: Form.date.value
       }
     },
-    // formatData() {
-    //   console.log("formatar os dados")
-    // },
+   
     validateFields() {
       const { description, amount, date } = Form.getValues()
+
       if(description.trim() === "" || amount.trim() === "" || date.trim() === "" ) {
         throw new Error("Por favor, preencha todos os campos")
       }
     },
-    submit(event) {      
+
+    formatValues() {
+      let { description, amount, date } = Form.getValues()
+
+      amount = Utils.formatAmount(amount)
+
+      date = Utils.formatDate(date)
+
+      return {
+        description,
+        amount,
+        date
+      }
+    },
+
+    clearFields() {
+      Form.description.value = ""
+      Form.amount.value = ""
+      Form.date.value = ""
+    },
+
+     submit(event) {      
         event.preventDefault() 
 
         try {
           Form.validateFields()
 
+          const transaction = Form.formatValues()
+
+          Transaction.add(transaction)
+
+          Form.clearFields()
+          Modal.close()
+
         } catch (error){
           alert(error.message)
         }
-
-
-        //Form.formatData()
-
-
     }
   }
 
@@ -183,17 +216,4 @@ const Modal = {
 App.init()
 
 
-<<<<<<< HEAD
-=======
-Transaction.add({
-    id: 39,
-    description:'Alô',
-    amount: 200,
-    date: '23/01/2021'
-})
-
-// continuar de 1:43:56
-// continuar de 1:43:56
-// continuar de 1:43:56
-
->>>>>>> 1f4f38a4d4e6355d79a5f8b1eec4afe0a28f0678
+// continuar de 2:37:37
