@@ -20,7 +20,7 @@ html {
 }
 
 body{
-    background: #f0f2f5;
+    background: #262626;
 }
 
 .sr-only {
@@ -54,6 +54,7 @@ h2{
 a {
     color:var(--green);;
     text-decoration: none;
+    font-weight: 900;
 
 }
 
@@ -177,7 +178,7 @@ table tbody tr td:last-child{
 
 table th{
     background: #fff;
-    font-weight: normal;
+    font-weight: 900;
     padding: 1rem 2rem;
     text-align: left;
 }
@@ -283,6 +284,8 @@ footer{
     padding: 4rem 0 2rem;
     color: var(--dark-blue);
     opacity: 0.6;
+    color: #fff;
+    font-weight: 900;
 }
 
 /* == RESPONSIVE == */
